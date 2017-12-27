@@ -1,0 +1,26 @@
+version: '2'
+services:
+    php-apache:
+        image: sendy
+        working_dir: /var/www/html
+        container_name: sendy-apache
+        volumes:
+            - ./sendy/:/var/www/html
+            - ./cron:/etc/cron.d/sendy
+            - ./apache.conf:/etc/apache2/sites-enabled/000-default.conf
+        ports:
+          - "80:80"
+          - "443:443"
+        env_file:
+            - .env
+        links:
+            - mysql
+    mysql:
+        image: mysql:5.5
+        container_name: sendy-mysql
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        env_file:
+              - .env
