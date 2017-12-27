@@ -1,7 +1,7 @@
 version: '2'
 services:
     apache-php:
-        image: sendy
+        image: kuix/sendy
         working_dir: /var/www/html
         container_name: sendy-apache-php
         volumes:
