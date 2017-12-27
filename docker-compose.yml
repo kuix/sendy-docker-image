@@ -1,9 +1,9 @@
 version: '2'
 services:
-    php-apache:
+    apache-php:
         image: sendy
         working_dir: /var/www/html
-        container_name: sendy-apache
+        container_name: sendy-apache-php
         volumes:
             - ./sendy/:/var/www/html
             - ./cron:/etc/cron.d/sendy
